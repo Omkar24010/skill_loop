@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="SkillLoop: career and skill navigation for students. Learn, build, prove, improve.">
-<title>SkillLoop Prototype</title>
+<meta name="description" content="Skill Loop: career and skill navigation for students. Learn, build, prove, improve.">
+<title>Skill Loop Prototype</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Instrument+Sans:wght@400;500;600&display=swap">
 <style>
 /* Dark editorial, single theme by choice. Layout: nav rail + one calm reading column; the gap bar is the only loud object. */
@@ -509,7 +509,7 @@ const CAREERS={
   ['SQL','Important',3,'Build a SQL analysis of a public dataset','choose a dataset with related tables|write 8 queries that answer business questions|use joins, CTEs and window functions|document findings in a README'],
   ['Data Visualization','Important',3,'Redesign three charts with written rationale','pick three weak charts|redraw each one|annotate the key point|explain each decision'],
   ['Documentation','Important',3,'Write a user guide for a tool you know','define the audience|structure the tasks|add screenshots|test it with one reader']]}};
-const GENERIC=n=>({focus:'Core skills and proof of work',desc:`SkillLoop does not have a detailed map for ${n} yet, so this path uses a general framework. The levels, evidence rules and loop work the same way.`,skills:[
+const GENERIC=n=>({focus:'Core skills and proof of work',desc:`Skill Loop does not have a detailed map for ${n} yet, so this path uses a general framework. The levels, evidence rules and loop work the same way.`,skills:[
   ['Core Fundamentals','Critical',3,'Complete one small end-to-end project','define a small brief|do the core work|check it against the brief|write up what you learned'],
   ['Tools of the Trade','Critical',3,'Produce one real output with the main tool','pick the standard tool|follow one full workflow|produce a finished output|note what was hard'],
   ['Applied Project Work','Critical',3,'Build a project that mirrors real work','find a realistic brief|plan the work|deliver it|document decisions'],
@@ -644,7 +644,7 @@ const SCREENS=[['Dashboard','today','a','Where do I stand right now?','Every ski
 function pvShell(view,st){return withS(st,()=>{
   const cur=view==='result'?'today':view;
   const nav=NAV.map(([v,l])=>`<button ${cur===v?'aria-current="page"':''}><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">${ICON[v]}</svg>${l}</button>`).join('');
-  return `<div class="app"><aside class="rail"><div class="brand">${LOGO}<span>SkillLoop</span></div><nav class="nav">${nav}</nav><div class="who"><span class="av">OP</span><span class="wt"><span class="wn">Omkar Padhi</span><span>Demo · Data Analyst</span></span></div></aside><div><main>${VIEWS[view]()}</main></div></div>`})}
+  return `<div class="app"><aside class="rail"><div class="brand">${LOGO}<span>Skill Loop</span></div><nav class="nav">${nav}</nav><div class="who"><span class="av">OP</span><span class="wt"><span class="wn">Omkar Padhi</span><span>Demo · Data Analyst</span></span></div></aside><div><main>${VIEWS[view]()}</main></div></div>`})}
 function loopPanel(i){
   const pb={name:'Power BI',level:2,target:3},v=s=>({strength:s,verified:true});
   return `<div class="lpanel" data-i="${i}" inert>${[
@@ -666,26 +666,26 @@ function GBDemo(){
 function aiState(c){return c==='Data Analyst'?landStates().a:(AIC[c]=AIC[c]||{...base(),profile:{name:'You',career:c,stage:1,goal:2},skills:buildSkills(c,1),evidence:[]})}
 function AIDemo(){return withS(aiState(LS.career),()=>{
   const a=nextAction(),s=sk(a.skill),t=a.title[0].toLowerCase()+a.title.slice(1);
-  return `<div class="hero" id="aiout"><div class="row" style="justify-content:space-between"><span class="eyebrow ai">SkillLoop Intelligence</span><span class="hint">${esc(LS.career)} · focus: ${esc(careerData(LS.career).focus)}</span></div>
+  return `<div class="hero" id="aiout"><div class="row" style="justify-content:space-between"><span class="eyebrow ai">Skill Loop Intelligence</span><span class="hint">${esc(LS.career)} · focus: ${esc(careerData(LS.career).focus)}</span></div>
    <h3 class="serif" style="font-size:clamp(24px,3.2vw,34px);font-weight:400;line-height:1.12">Your highest-value next step is to ${esc(t)}.</h3>
    <div><span class="k">Why this, why now?</span><div class="whys">${a.why.map(w=>`<div><span class="k">${w[0]}</span><p>${esc(w[1])}</p></div>`).join('')}</div></div>
    <div class="cmp" style="border-top:1px solid var(--line);padding-top:14px"><div><span class="eyebrow">Evidence you would produce</span><ul>${a.parts.map(x=>`<li>${cap(x)}</li>`).join('')}</ul></div><div><span class="eyebrow">Priority skills</span><ul>${gapsSorted().slice(0,3).map((g,i)=>`<li>${i+1}. ${g.name} <span class="sub">${g.imp}</span></li>`).join('')}</ul></div></div>
    ${LS.busy?`<div class="row"><div class="pulse"></div><div class="think" role="status"><span>Reading the skill map</span><span>Ordering gaps by importance and effort</span><span>Fitting actions into four weeks</span></div></div>`
    :LS.plan?`<div class="sec" style="gap:12px;border-top:1px solid var(--line);padding-top:14px"><h3 class="serif" style="font-size:22px;font-weight:400">30-Day Skill Plan</h3><div class="weeks">${LS.plan.weeks.map(w=>`<div><span class="eyebrow">${w[0]}</span><b>${w[1]}</b><ul class="plain" style="font-size:13.5px">${w[2].map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`).join('')}</div></div>`
    :`<div class="row"><button class="btn" data-act="lplan">Generate My 30-Day Plan</button><button class="link" data-act="begin">Use my own profile instead</button></div>`}
-   <p class="hint">Prototype intelligence: recommendations are assembled in your browser from SkillLoop’s career data. A production version would use a language model to tailor them further.</p></div>`})}
+   <p class="hint">Prototype intelligence: recommendations are assembled in your browser from Skill Loop’s career data. A production version would use a language model to tailor them further.</p></div>`})}
 function Landing(){
   const m=(n,l,t,ev)=>`<div class="mr"><span>${n}</span>${GapBar({name:n,level:l,target:t},{ev})}</div>`;
   const v=s=>({strength:s,verified:true}),h={strength:1,verified:false},LSt=landStates();
   const has=S.profile&&S.skills,LW=[['Learn','Understand what the career requires.','Skills, how much each matters, and the level you need.'],['Build','Complete a practical action.','One scoped piece of work with a clear finish line.'],['Prove','Add evidence.','Link what you made to the skill. It takes under a minute.'],['Improve','Reassess and continue.','Your level, readiness and next action update.']];
   return `<div class="land">
-  <header class="lnav" id="lnav"><div class="brand">${LOGO}<span>SkillLoop</span></div>
+  <header class="lnav" id="lnav"><div class="brand">${LOGO}<span>Skill Loop</span></div>
    <nav class="lnav-links" aria-label="Sections">${[['loop','How it works'],['gap','Skill Map'],['proof','Evidence'],['ai','AI'],['product','Demo']].map(x=>`<button data-act="jump" data-v="${x[0]}">${x[1]}</button>`).join('')}</nav>
    <button class="btn ghost sm" data-act="demo">Explore Demo</button></header>
   <section class="land-hero" id="top">
    <div class="land-copy"><span class="eyebrow">Career and skill navigation for students</span>
     <h1 tabindex="-1">Stop guessing what to learn next. <em>Start proving you’re ready.</em></h1>
-    <p class="lede">SkillLoop maps your target career to the skills it requires, shows what your evidence actually proves, and gives you the next action that matters most.</p>
+    <p class="lede">Skill Loop maps your target career to the skills it requires, shows what your evidence actually proves, and gives you the next action that matters most.</p>
     <div class="row"><button class="btn" data-act="begin">Build My Skill Path</button><button class="btn ghost" data-act="demo">Explore Demo</button></div>
     <p class="hint">No sign-up required for the demo.${has?` <button class="link" data-act="resume">Continue as ${esc(first())}</button>`:''}</p></div>
    <div class="stage" id="stage" aria-hidden="true"><div class="stack" id="stack">
@@ -694,14 +694,14 @@ function Landing(){
      <div class="layer l-career"><span class="k">Career</span><div class="serif" style="font-size:18px">Data Analyst</div></div>
      <div class="layer l-chip"><span class="k">Readiness</span><div class="serif" style="font-size:22px">4 of 7 at target</div></div>
      <div class="layer l-ev"><span class="k">Evidence</span><div><span>Project</span><span class="tag">Built</span></div><div><span>Assessment</span><span class="tag">Completed</span></div><div><span>Portfolio</span><span class="tag miss">Missing</span></div></div>
-     <div class="layer l-rec"><span class="eyebrow ai">SkillLoop Intelligence</span><div class="serif" style="font-size:19px;line-height:1.2;margin-top:6px">Build a Power BI sales dashboard</div><span class="hint">Power BI → Applied · 2–3 hours</span></div>
+     <div class="layer l-rec"><span class="eyebrow ai">Skill Loop Intelligence</span><div class="serif" style="font-size:19px;line-height:1.2;margin-top:6px">Build a Power BI sales dashboard</div><span class="hint">Power BI → Applied · 2–3 hours</span></div>
    </div></div>
   </section>
 
-  <section class="lsec" id="problem"><div class="lwrap"><div class="lhd reveal"><span class="eyebrow">Why SkillLoop exists</span><h2>Knowing the career isn’t the same as knowing <em>what to do next.</em></h2></div>
+  <section class="lsec" id="problem"><div class="lwrap"><div class="lhd reveal"><span class="eyebrow">Why Skill Loop exists</span><h2>Knowing the career isn’t the same as knowing <em>what to do next.</em></h2></div>
    <div class="flows" id="flows"><div class="flow-col flow-old"><span class="eyebrow">Today</span>${['Career goal','10 courses','20 YouTube videos','5 saved posts','Still unsure'].map(x=>`<div class="fstep">${x}</div>`).join('')}</div>
     <div class="flow-mid" aria-hidden="true">→</div>
-    <div class="flow-col flow-new"><span class="eyebrow ai">With SkillLoop</span>${['Career goal','Skill requirements','Your evidence','Your biggest gap','One next action'].map(x=>`<div class="fstep">${x}</div>`).join('')}</div></div></div></section>
+    <div class="flow-col flow-new"><span class="eyebrow ai">With Skill Loop</span>${['Career goal','Skill requirements','Your evidence','Your biggest gap','One next action'].map(x=>`<div class="fstep">${x}</div>`).join('')}</div></div></div></section>
 
   <section class="lsec" id="loop"><div class="lwrap"><div class="lhd reveal"><span class="eyebrow">How it works</span><h2>One loop, repeated until you’re ready.</h2></div>
    <div class="loopgrid"><div>${LW.map((w,i)=>`<div class="lstage ${i?'':'on'}" data-i="${i}"><span class="eyebrow">Stage ${i+1} of 4</span><div class="lword">${w[0]}</div><p class="serif" style="font-size:22px">${w[1]}</p><p class="lede">${w[2]}</p>${loopPanel(i)}</div>`).join('')}</div>
@@ -718,7 +718,7 @@ function Landing(){
   <section class="lsec" id="gap"><div class="lwrap"><div class="lhd reveal"><span class="eyebrow">The Evidence-Ticked Gap Bar</span><h2>Know exactly where the gap is.</h2><p class="lede">Your progress is based on what you can prove, not what you say you know.</p></div>
    <div class="gbx reveal" id="gbx">${GBDemo()}</div></div></section>
 
-  <section class="lsec" id="ai"><div class="lwrap"><div class="lhd reveal"><span class="eyebrow ai">SkillLoop Intelligence</span><h2>Don’t just tell me what I’m missing. <em>Tell me what to do next.</em></h2></div>
+  <section class="lsec" id="ai"><div class="lwrap"><div class="lhd reveal"><span class="eyebrow ai">Skill Loop Intelligence</span><h2>Don’t just tell me what I’m missing. <em>Tell me what to do next.</em></h2></div>
    <div class="aigrid"><div><span class="k" id="cselh">What are you working toward?</span><div class="csel" role="group" aria-labelledby="cselh" style="margin-top:10px">${Object.keys(CAREERS).map(c=>`<button data-act="lcareer" data-v="${c}" aria-pressed="${c===LS.career}">${c}<span>selected</span></button>`).join('')}</div></div>
     <div id="aiwrap">${AIDemo()}</div></div></div></section>
 
@@ -726,7 +726,7 @@ function Landing(){
    <p class="serif" style="font-size:clamp(20px,2.6vw,28px);color:var(--ink2)">Turn it into a skill path.<br>Turn the skill path into proof.</p>
    <div class="row"><button class="btn" data-act="begin">Build My Skill Path</button><button class="btn ghost" data-act="demo">Explore Demo</button></div>
    <p class="hint">No sign-up · Saved in your browser only · Reset any time</p></div></section>
-  <footer class="lfoot"><span>SkillLoop · Learn → Build → Prove → Improve</span><span>UX prototype for Drishti 2026. No backend; nothing leaves this device.</span></footer></div>`}
+  <footer class="lfoot"><span>Skill Loop · Learn → Build → Prove → Improve</span><span>UX prototype for Drishti 2026. No backend; nothing leaves this device.</span></footer></div>`}
 
 /* ---------- Onboarding ---------- */
 function Onb(){
@@ -744,7 +744,7 @@ function Onb(){
   else if(st===3)body=`${dots}<h1 tabindex="-1">What’s your goal?</h1>
    <div class="chips">${GOALS.map((x,i)=>`<button class="chip" data-act="obset" data-k="goal" data-v="${i}" aria-pressed="${o.goal===i}"><b>${x[0]}</b></button>`).join('')}</div>${err}${nav('Build My Skill Path')}`;
   else body=`<div class="pulse"></div><h1 tabindex="-1">Building your skill path</h1><div class="think" role="status"><span>Reading what ${esc(o.career==='Other'?o.other:o.career)} roles require</span><span>Placing your self-reported levels on the map</span><span>Choosing your first action</span></div>`;
-  return `<div class="onb"><header class="land-top"><div class="brand">${LOGO}<span>SkillLoop</span></div><button class="link" data-act="home">Exit</button></header><div class="onb-body"><div class="onb-card">${body}</div></div></div>`}
+  return `<div class="onb"><header class="land-top"><div class="brand">${LOGO}<span>Skill Loop</span></div><button class="link" data-act="home">Exit</button></header><div class="onb-body"><div class="onb-card">${body}</div></div></div>`}
 
 /* ---------- App views ---------- */
 function Today(){
@@ -769,7 +769,7 @@ function Today(){
     ${S.skills.map(x=>`<button class="drow ${fl&&fl.skill===x.id?'flash':''}" data-act="skill" data-id="${x.id}"><span><span class="nm">${x.name}</span><span class="sub">${x.imp}</span></span>${GapBar(x,{fresh:fl&&fl.skill===x.id?fl.before:null})}<span class="lv"><b>${L[x.level]}</b> → ${L[x.target]}<br><span class="sub">${status(x)}</span></span><span class="ev sub">${evn(x)}</span></button>`).join('')}</div>
     ${Legend()}</section>
    ${cur?`<section class="hero" aria-labelledby="nba">
-    <div class="row" style="justify-content:space-between"><span class="eyebrow" id="nba">Your next best action</span>${act?'<span class="tag on">In progress</span>':'<span class="eyebrow ai">SkillLoop Intelligence</span>'}</div>
+    <div class="row" style="justify-content:space-between"><span class="eyebrow" id="nba">Your next best action</span>${act?'<span class="tag on">In progress</span>':'<span class="eyebrow ai">Skill Loop Intelligence</span>'}</div>
     <h2>${esc(cur.title)}</h2>
     <p class="lede">${esc(cur.reason)}</p>
     <dl class="facts"><div><dt>Expected skill progression</dt><dd>${s.name}: ${s.unv&&s.level>=cur.to?L[cur.to]+', verified':L[s.level]+' → '+L[cur.to]}</dd></div><div><dt>Evidence it will create</dt><dd>${cur.produces}</dd></div><div><dt>Estimated effort</dt><dd>${cur.time}</dd></div></dl>
@@ -786,7 +786,7 @@ function Today(){
    <section class="sec c"><div class="sec-h"><h2>Recent progress</h2><span class="hint">${S.evidence.length} evidence item${S.evidence.length===1?'':'s'}</span></div>
     ${S.history.length?`<div class="list">${[...S.history].reverse().slice(0,4).map(h=>`<div class="item"><span>${esc(h.text)}</span><span class="sub" style="grid-column:2;grid-row:1">${fmt(h.date)}</span><span class="sub">${esc(h.why)}</span></div>`).join('')}</div>`:`<div class="empty"><b>No reassessments yet.</b><span>Complete your first action and add evidence. Each change to a skill level is recorded here.</span></div>`}</section>
   </div>
-  <section class="sec"><div class="sec-h"><h2>Your SkillLoop</h2><span class="hint">${cur?esc(s.name):'Complete'}</span></div>
+  <section class="sec"><div class="sec-h"><h2>Your Skill Loop</h2><span class="hint">${cur?esc(s.name):'Complete'}</span></div>
     <div class="loop">${loop.map((x,i)=>`<div class="${i<stage?'done':i===stage?'now':''}"><b>${x[0]}</b><span>${i<stage?'Done':i===stage?'Current stage · '+x[1]:x[1]}</span></div>`).join('')}</div></section>
   </div>`}
 
@@ -813,7 +813,7 @@ function SkillMap(){
 
 function explain(s){
   const ev=evOf(s.id),top=Math.max(-1,...ev.filter(e=>e.verified).map(e=>e.strength)),g=gapN(s);
-  if(s.unv)return `You rated yourself ${L[s.level]}. That is a starting point, not yet an assessment. Add evidence and SkillLoop will confirm or adjust the level.`;
+  if(s.unv)return `You rated yourself ${L[s.level]}. That is a starting point, not yet an assessment. Add evidence and Skill Loop will confirm or adjust the level.`;
   if(g<=0)return `This skill is at its target level. Your strongest evidence is ${STR[Math.max(top,0)].toLowerCase()}, which supports ${L[s.level]}.`;
   const shows=['self-reported activity','learning activity','applied project work','reviewed work'][Math.max(top,0)];
   const need=s.level+1>=4?'independently reviewed work':s.level+1===3?'substantial applied project':'completed course or assessment';
@@ -833,7 +833,7 @@ function Skill(){
     ${a?`<div class="list"><button class="item" data-act="${act?'go':'brief'}" data-v="progress" data-id="${a.id}"><span>${esc(a.missing)}</span><span class="tag miss">Missing</span><span class="sub">Needed for ${L[a.to]} · opens the action ›</span></button>
      ${a.to<s.target?`<div class="item"><span style="color:var(--ink3)">Reviewed work</span><span class="tag miss">Later</span><span class="sub">Needed for ${L[s.target]}</span></div>`:''}</div>`:`<div class="empty"><b>Nothing missing.</b><span>Your evidence supports the target level.</span></div>`}</div></div>
    <p class="hint">Evidence strength maps to skill level: Self-reported → Aware, Completed → Practised, Built → Applied, Reviewed → Proven. Completing a course is not the same as proving competence.</p></section>
-  ${a?`<section class="sec"><div class="sec-h"><h2>Recommended action</h2><span class="eyebrow ai">SkillLoop Intelligence</span></div><p class="serif" style="font-size:24px">${esc(a.title)}.</p><p class="lede"><b>What you’re missing:</b> ${esc(a.missing.toLowerCase())}. ${esc(a.why[2][1])}</p><p class="hint">${a.time} · ${s.name} → ${L[a.to]}</p>
+  ${a?`<section class="sec"><div class="sec-h"><h2>Recommended action</h2><span class="eyebrow ai">Skill Loop Intelligence</span></div><p class="serif" style="font-size:24px">${esc(a.title)}.</p><p class="lede"><b>What you’re missing:</b> ${esc(a.missing.toLowerCase())}. ${esc(a.why[2][1])}</p><p class="hint">${a.time} · ${s.name} → ${L[a.to]}</p>
    <div class="row"><button class="btn" data-act="${act?'go':'brief'}" data-v="progress" data-id="${a.id}">${act?'Continue action':'View action'}</button></div></section>`:''}
   </div>`}
 
@@ -841,7 +841,7 @@ function Brief(){
   const a=actById(S.briefId),s=sk(a.skill);
   return `<div class="col narrow">
   <header class="head"><div class="eyebrow">Action brief · ${s.name} · ${s.imp}</div><h1 tabindex="-1">${esc(a.title)}</h1><p class="lede"><b>Objective:</b> produce ${a.produces.toLowerCase()} that shows ${s.name} at ${L[a.to]}.</p></header>
-  <section class="sec"><div class="sec-h"><h2>Why this, why now?</h2><span class="eyebrow ai">SkillLoop Intelligence</span></div><div class="whys" style="padding:0">${a.why.map(w=>`<div><span class="k">${w[0]}</span><p>${esc(w[1])}</p></div>`).join('')}</div>${GapBar(s,{scale:1})}</section>
+  <section class="sec"><div class="sec-h"><h2>Why this, why now?</h2><span class="eyebrow ai">Skill Loop Intelligence</span></div><div class="whys" style="padding:0">${a.why.map(w=>`<div><span class="k">${w[0]}</span><p>${esc(w[1])}</p></div>`).join('')}</div>${GapBar(s,{scale:1})}</section>
   <section class="sec"><div class="sec-h"><h2>Done when</h2><span class="hint">${a.steps.length} criteria</span></div><div class="list">${a.steps.map(x=>`<div class="check static"><input type="checkbox" disabled aria-hidden="true"><span>${esc(x)}</span></div>`).join('')}</div></section>
   <section class="kv"><div><span class="k">Evidence this creates</span><span class="v">${STR[a.strength]} ${a.evType.toLowerCase()}</span></div><div><span class="k">Expected skill change</span><span class="v">${s.unv&&s.level>=a.to?L[a.to]+', verified':L[s.level]+' → '+L[a.to]}</span></div><div><span class="k">Estimated time</span><span class="v">${a.time}</span></div><div><span class="k">Importance</span><span class="v">${s.imp}</span></div></section>
   <div class="row"><button class="btn" data-act="start" data-id="${a.id}">Start building</button><button class="btn ghost" data-act="skipask" data-id="${a.id}">Skip for now</button></div></div>`}
@@ -870,7 +870,7 @@ function Add(){
    <div class="field"><label for="f-skill">Linked skill</label><select id="f-skill">${S.skills.map(s=>`<option value="${s.id}" ${s.id===c.skill?'selected':''}>${s.name}</option>`).join('')}</select></div>
    <div class="field"><label for="f-desc">Short description</label><textarea id="f-desc" placeholder="One or two sentences on what it shows">${esc(desc)}</textarea></div>
    <div class="field"><span class="lab">Evidence strength</span>${radios('str',[[1,'Completed'],[2,'Built'],[3,'Reviewed']],st)}<span class="hint">Completed: you finished a course or test. Built: you made something yourself. Reviewed: someone qualified checked it.</span></div>
-   <div class="row"><button class="btn" type="submit" id="f-sub">Submit evidence</button><span class="hint">SkillLoop reassesses the linked skill straight away.</span></div>
+   <div class="row"><button class="btn" type="submit" id="f-sub">Submit evidence</button><span class="hint">Skill Loop reassesses the linked skill straight away.</span></div>
   </form></div>`}
 
 function Assessing(){const s=sk(S.result.skill);return `<div class="col narrow" style="padding-top:8vh"><div class="pulse"></div><h1 tabindex="-1">Reassessing ${s.name}</h1><div class="think" role="status"><span>Evidence recorded</span><span>Comparing its strength with the ${L[s.target]} target</span><span>Updating readiness and your next action</span></div></div>`}
@@ -893,14 +893,14 @@ function Result(){
   <section class="sec"><div class="sec-h"><h2>Readiness</h2></div><div class="kv"><div><span class="k">Before</span><span class="v" style="color:var(--ink3)">${r.readyBefore} of ${n} skills at target</span></div><div><span class="k">After</span><span class="v">${Roll(r.readyBefore,r.readyAfter)} of ${n} skills at target</span></div></div>
    <div class="pips" aria-hidden="true">${S.skills.map(x=>`<i class="${atT(x)?'on':''}"></i>`).join('')}</div>
    <p class="hint">${left?`${left===1?'One critical gap remains':left+' critical gaps remain'} before your target.`:'No critical gaps remain.'} Evidence for ${s.name}: ${evOf(s.id).length} items.</p></section>
-  <section class="sec"><div class="sec-h"><h2>Your next action</h2><span class="eyebrow ai">SkillLoop Intelligence</span></div>${a?`<p class="serif" style="font-size:24px">${esc(a.title)}.</p><p class="lede">${esc(a.reason)}</p>`:`<p class="serif" style="font-size:24px">Every required skill is at target.</p>`}
+  <section class="sec"><div class="sec-h"><h2>Your next action</h2><span class="eyebrow ai">Skill Loop Intelligence</span></div>${a?`<p class="serif" style="font-size:24px">${esc(a.title)}.</p><p class="lede">${esc(a.reason)}</p>`:`<p class="serif" style="font-size:24px">Every required skill is at target.</p>`}
    <div class="row"><button class="btn" data-act="go" data-v="today">Back to Dashboard</button><button class="btn ghost" data-act="go" data-v="map">See Skill Map</button></div></section></div>`}
 
 function Evidence(){
   const tab=(v,l)=>`<button data-act="set" data-k="evTab" data-v="${v}" aria-pressed="${S.evTab===v}">${l}</button>`;
   const proj=S.evidence.filter(e=>e.strength>=2).reverse(),cnt=i=>S.evidence.filter(e=>e.strength===i).length;
   if(!S.evidence.length)return `<div class="col"><header class="head"><div class="eyebrow">What have you actually proved?</div><h1 tabindex="-1">Evidence</h1></header>
-   <div class="empty" style="padding:36px"><b>No evidence yet.</b><span style="max-width:52ch">Your skill levels are self-reported for now. Add a course, an assessment or a project and SkillLoop will place it under the level it supports.</span><div class="row" style="margin-top:10px"><button class="btn" data-act="add">+ Add evidence</button><button class="btn ghost" data-act="go" data-v="today">See my next action</button></div></div></div>`;
+   <div class="empty" style="padding:36px"><b>No evidence yet.</b><span style="max-width:52ch">Your skill levels are self-reported for now. Add a course, an assessment or a project and Skill Loop will place it under the level it supports.</span><div class="row" style="margin-top:10px"><button class="btn" data-act="add">+ Add evidence</button><button class="btn ghost" data-act="go" data-v="today">See my next action</button></div></div></div>`;
   return `<div class="col">
   <header class="head"><div class="eyebrow">What have you actually proved?</div><h1 tabindex="-1">Evidence</h1><p class="lede">${S.evidence.length} items. ${cnt(3)} reviewed, ${cnt(2)} built, ${cnt(1)} completed${cnt(0)?`, ${cnt(0)} self-reported`:''}. Each one is linked to a skill and graded by strength.</p></header>
   <div class="row" style="justify-content:space-between"><div class="seg" role="group">${tab('library','Library')}${tab('portfolio','Portfolio view')}</div><button class="btn" data-act="add">+ Add evidence</button></div>
@@ -926,14 +926,14 @@ function Career(){
   const oFit=o&&o.skills.filter(p=>{const m=S.skills.find(s=>s.name===p[0]);return m&&m.level>=p[2]&&!m.unv}).length;
   return `<div class="col">
   <header class="head"><div class="eyebrow">Target career</div><h1 tabindex="-1">${esc(c)}</h1><p class="lede">${esc(d.desc)}</p></header>
-  <section class="sec"><div class="sec-h"><h2>Your career plan</h2><span class="eyebrow ai">SkillLoop Intelligence</span></div>
+  <section class="sec"><div class="sec-h"><h2>Your career plan</h2><span class="eyebrow ai">Skill Loop Intelligence</span></div>
    <div class="kv"><div><span class="k">Your current focus</span><span class="v">${esc(d.focus)}</span></div><div><span class="k">Goal</span><span class="v">${GOALS[S.profile.goal][0]}</span></div></div>
    <div class="cmp"><div><span class="eyebrow">Priority skills</span><ul>${(top.length?top:S.skills.slice(0,3)).map((s,i)=>`<li>${i+1}. ${s.name} <span class="sub">${s.imp}</span></li>`).join('')}</ul></div>
    <div><span class="eyebrow">Evidence you could produce</span><ul>${(a?a.parts:['Newer reviewed work']).map(p=>`<li>${cap(p)}</li>`).join('')}</ul></div></div>
    ${S.planBusy?`<div class="panel"><div class="row"><div class="pulse"></div><div class="think" role="status"><span>Reading your skill map</span><span>Ordering gaps by importance and effort</span><span>Fitting actions into four weeks</span></div></div></div>`
    :S.plan&&S.plan.career===c?`<div class="sec" style="gap:14px"><div class="row" style="justify-content:space-between"><h3 class="serif" style="font-size:24px;font-weight:400">30-Day Skill Plan</h3><button class="link" data-act="plan">Regenerate</button></div>
      <div class="weeks">${S.plan.weeks.map(w=>`<div><span class="eyebrow">${w[0]}</span><b>${w[1]}</b><ul class="plain" style="font-size:13.5px">${w[2].map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`).join('')}</div>
-     <p class="hint">Prototype intelligence: this plan is assembled on your device from SkillLoop’s career data and your current gaps. A production version would use a language model to tailor it further.</p></div>`
+     <p class="hint">Prototype intelligence: this plan is assembled on your device from Skill Loop’s career data and your current gaps. A production version would use a language model to tailor it further.</p></div>`
    :a?`<div class="row"><button class="btn" data-act="plan">Generate My Plan</button><span class="hint">A 30-day plan built from your gaps, goal and current level.</span></div>`:`<p class="hint">All skills are at target, so there is nothing to plan.</p>`}</section>
   <section class="sec"><div class="sec-h"><h2>What this career requires</h2><span class="hint">${ready()} of ${S.skills.length} at target</span></div>
    <div style="overflow-x:auto"><table><thead><tr><th>Skill</th><th>Importance</th><th>You need</th><th>You have</th></tr></thead><tbody>
@@ -957,7 +957,7 @@ function Profile(){
    <div class="list"><div class="item"><span>${S.demo?'Reset demo':'Reset experience'}</span><button class="btn ghost" data-act="reset" style="grid-column:2;grid-row:1/3">${S.demo?'Reset demo':'Start over'}</button><span class="sub">${S.demo?'Restores Omkar’s account to its starting state so the walkthrough can be repeated.':'Clears your profile, skills and evidence from this browser.'}</span></div>
    <div class="item"><span>Change career target</span><button class="btn ghost" data-act="go" data-v="career" style="grid-column:2;grid-row:1/3">Open Career</button><span class="sub">Compare roles and switch from the Career page.</span></div>
    <div class="item"><span>Exit to landing page</span><button class="btn ghost" data-act="home" style="grid-column:2;grid-row:1/3">Exit</button><span class="sub">Your data stays saved in this browser.</span></div></div>
-   <p class="hint">SkillLoop is a UX prototype. Everything is stored locally in your browser; nothing is sent to a server.</p></section></div>`}
+   <p class="hint">Skill Loop is a UX prototype. Everything is stored locally in your browser; nothing is sent to a server.</p></section></div>`}
 
 const VIEWS={today:Today,map:SkillMap,skill:Skill,brief:Brief,progress:Progress,add:Add,assessing:Assessing,result:Result,evidence:Evidence,career:Career,profile:Profile};
 const $=id=>document.getElementById(id);
@@ -977,9 +977,9 @@ function render(focus=true){
     const stepI={brief:0,progress:1,add:2,assessing:3,result:3}[S.view];
     const inAct=S.view==='add'?!!S.addCtx.action:true;
     root.innerHTML=flow?`<div class="flow"><header class="flowbar"><button class="back" data-act="go" data-v="${S.view==='add'&&!inAct?'evidence':'today'}">✕ ${S.view==='result'?'Back to Dashboard':'Exit'}</button>${inAct?`<ol class="steps" aria-label="Action steps">${['Brief','Build','Prove','Reassess'].map((x,i)=>`<li class="${i<stepI?'done':i===stepI?'now':''}">${x}</li>`).join('')}</ol>`:'<span class="hint">Add evidence</span>'}</header><main>${VIEWS[S.view]()}</main></div>`
-    :`<div class="app"><aside class="rail"><div class="brand">${LOGO}<span>SkillLoop</span></div><nav class="nav" aria-label="Main">${nav}</nav>
+    :`<div class="app"><aside class="rail"><div class="brand">${LOGO}<span>Skill Loop</span></div><nav class="nav" aria-label="Main">${nav}</nav>
       <button class="who" data-act="go" data-v="profile" aria-label="Profile and settings"><span class="av">${esc(initials())}</span><span class="wt"><span class="wn">${esc(S.profile.name)}</span><span>${S.demo?'Demo · ':''}${esc(S.profile.career)}</span></span></button></aside>
-     <div><div class="topbar"><div class="brand">${LOGO}<span>SkillLoop</span></div><button class="av" data-act="go" data-v="profile" aria-label="Profile and settings">${esc(initials())}</button></div><main>${VIEWS[S.view]()}</main></div></div>
+     <div><div class="topbar"><div class="brand">${LOGO}<span>Skill Loop</span></div><button class="av" data-act="go" data-v="profile" aria-label="Profile and settings">${esc(initials())}</button></div><main>${VIEWS[S.view]()}</main></div></div>
      <nav class="bottom" aria-label="Main">${nav}</nav>`;
   }
   if(focus){window.scrollTo(0,0);root.querySelector('h1')?.focus({preventScroll:true})}
